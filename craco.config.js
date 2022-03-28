@@ -1,6 +1,7 @@
 const CracoLessPlugin = require("craco-less");
 const pxtorem = require("postcss-pxtorem");
 module.exports = {
+  // 移动端适配
   style: {
     postcss: {
       mode: "extends",
@@ -19,7 +20,7 @@ module.exports = {
     },
   },
   babel: {
-    //做按需加载
+    //做antd-mobile样式按需加载
     plugins: [
       [
         "import",
@@ -31,13 +32,14 @@ module.exports = {
       ],
     ],
   },
+  // 配置less支持
   plugins: [
     {
       plugin: CracoLessPlugin,
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: {},
+            modifyVars: { "@primary-color": "#1DA57A" },
             javascriptEnabled: true,
           },
         },

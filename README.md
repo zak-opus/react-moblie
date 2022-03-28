@@ -6,4 +6,4 @@
 
 ### `npm run eject`
 
-**部分依赖包只能使用yarn安装**
+**注意:react社区方案如`@craco/craco`,只能使用yarn安装,所以本项目使用yarn**
