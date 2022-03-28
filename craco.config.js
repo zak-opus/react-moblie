@@ -1,19 +1,23 @@
 const CracoLessPlugin = require("craco-less");
-
+const pxtorem = require("postcss-pxtorem");
 module.exports = {
-  plugins: [
-    {
-      plugin: CracoLessPlugin,
-      options: {
-        lessLoaderOptions: {
-          lessOptions: {
-            modifyVars: { "@brand-primary": "#108ee8" },
-            javascriptEnabled: true,
-          },
-        },
-      },
+  style: {
+    postcss: {
+      mode: "extends",
+      plugins: [
+        pxtorem({
+          rootValue: 37.5, // 设计稿宽度/100，即分成多少份
+          unitPrecision: 5, // 小数精度
+          propList: ["*"],
+          selectorBlackList: [],
+          replace: true,
+          mediaQuery: false,
+          minPixelValue: 0,
+          exclude: /node_modules/i,
+        }),
+      ],
     },
-  ],
+  },
   babel: {
     //做按需加载
     plugins: [
@@ -27,4 +31,17 @@ module.exports = {
       ],
     ],
   },
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: {
+          lessOptions: {
+            modifyVars: {},
+            javascriptEnabled: true,
+          },
+        },
+      },
+    },
+  ],
 };
