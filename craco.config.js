@@ -1,26 +1,8 @@
 const CracoLessPlugin = require("craco-less");
 const pxtorem = require("postcss-pxtorem");
 module.exports = {
-  // 移动端适配
-  style: {
-    postcss: {
-      mode: "extends",
-      plugins: [
-        pxtorem({
-          rootValue: 37.5, // 设计稿宽度/100，即分成多少份
-          unitPrecision: 5, // 小数精度
-          propList: ["*"],
-          selectorBlackList: [],
-          replace: true,
-          mediaQuery: false,
-          minPixelValue: 0,
-          exclude: /node_modules/i,
-        }),
-      ],
-    },
-  },
+  //做antd-mobile样式按需加载
   babel: {
-    //做antd-mobile样式按需加载
     plugins: [
       [
         "import",
@@ -39,11 +21,33 @@ module.exports = {
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: { "@primary-color": "#1DA57A" },
+            modifyVars: {
+              "@brand-primary": "#E1251B",
+              "@brand-primary-tap": "#D24747",
+            },
             javascriptEnabled: true,
           },
         },
       },
     },
   ],
+  // 移动端适配
+  style: {
+    postcss: {
+      mode: "extends",
+      plugins: [
+        pxtorem({
+          rootValue: 37.5, // 设计稿宽度/100，即分成多少份
+          unitPrecision: 5, // 小数精度
+          propList: ["*"],
+          selectorBlackList: [],
+          replace: true,
+          mediaQuery: false,
+          minPixelValue: 0,
+          // exclude: /node_modules/i, 
+          //不对这些文件中样式做转换，开启后，按需引入的antd样式就不能转换rem了
+        }),
+      ],
+    },
+  },
 };
