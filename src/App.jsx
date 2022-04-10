@@ -9,7 +9,7 @@ export default class App extends Component {
           {routes.map((routeObj) => (
             <Route key={routeObj.path} {...routeObj} />
           ))}
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/user" />} />
         </Routes>
       </div>
     );
