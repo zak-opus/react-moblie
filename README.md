@@ -15,3 +15,23 @@
 ### `npm run eject`
 
 **注意:react社区方案如`@craco/craco`,只能使用yarn安装,所以本项目使用yarn**
+
+### 四、笔记
+redux就是用于存放一些公用的变量，让组件们可以访问与操作；
+action、reducer:都用于操作公共变量，前者用于组件进行操作，后者用于对操作进行执行；
+react-redux：用于让redux脱离组件本身，通过容器`connect(mapStateToProps,mapDispatchToProps)(UI组件)`，连接组件与redux;
+`import { connect } from "react-redux";`
+`import { Provider } from "react-redux";`
++ mapStateToProps函数:参数`state`，返回对象，键名供组件使用来使用state；
+```js
+(state) => ({ sum: state })
+```
++ mapDispatchToProps函数：参数`dispatch`,返回对象，键名供组件使用来操作state；
+```js
+(dispatch) => {
+   return {
+     jia: (value) => {
+       dispatch(createIncrementAction(value));
+     },
+   };
+```

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 export default class User extends Component {
   increment = () => {
     const { value } = this.numberNode;
