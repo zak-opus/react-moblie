@@ -1,14 +1,14 @@
 import CountUI from "../../pages/User";
 import { connect } from "react-redux";
-import { createIncrementAction } from "../../redux/count_action";
+import { increment } from "../../redux/count_action";
 
 const mapStateToProps = (state) => {
   return { sum: state.count };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    jia: (value) => {
-      dispatch(createIncrementAction(value));
+    increment: (value) => {
+      dispatch(increment(value));
     },
   };
 };
@@ -17,6 +17,6 @@ const mapDispatchToProps = (dispatch) => {
 // a:返回普通状态对象的函数
 // b:返回普通操作对象方法的函数
 // export default connect(mapStateToProps, {
-//   jia: createIncrementAction,
+//   increment: increment,
 // })(CountUI);
 export default connect(mapStateToProps, mapDispatchToProps)(CountUI);

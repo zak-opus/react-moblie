@@ -3,7 +3,7 @@
 // 供redux使用
 export default function countReducer(preState = 0, action) {
   const { type, data } = action;
-  console.log('11');
+  console.log('我是第一个容器组建的的reducer');
   switch (type) {
     case "increment":
       return preState + data;

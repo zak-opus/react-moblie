@@ -2,7 +2,7 @@ import { Component } from "react";
 export default class User extends Component {
   increment = () => {
     const { value } = this.numberNode;
-    this.props.jia(value * 1);
+    this.props.increment(value * 1);
   };
   decrement = () => {};
   incrementIfOdd = () => {};
