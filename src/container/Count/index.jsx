@@ -1,4 +1,4 @@
-import CountUI from "../../pages/User";
+import CountUI from "../../pages/Count";
 import { connect } from "react-redux";
 import { increment } from "../../redux/count_action";
 

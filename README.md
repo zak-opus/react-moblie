@@ -30,25 +30,26 @@ action、reducer:都用于操作公共变量，前者用于组件进行操作，
 reducer:redux的reducer必须是一个纯函数：参数(`preState、action`)本身不能被修改，只能被使用，因为例如`preState=[],直接更改它，redux底层发现返回值也是preState相同的引用地址,导致误以为数据没有发生变化，页面不刷新`。
 
 ```js
-//action
+//action.js
 export const createIncrementAction =(value)=>{return {type:data}}
-//reducer
+//reducer.js
 export default function countReducer(preState = 0, action){return ...}
-//store
+//store.js
 const store = createStore(countReducer, applyMiddleware(thunk));
+```
+```js
 // 多个reducer时,以对象形式传入
 import { createStore, applyMiddleware,combineReducers } from "redux";
 const allReducer = combineReducers({count:countReducer})
 const store = createStore(allReducer, applyMiddleware(thunk));
 ```
-
-> 容器组件获取状态时通过对应的`reducer`键值；
-> 而修改状态时，redux会遍历所有`reducer`中`type`，所以一般不同容器对应的`action`也应不同；
-``
+> 正常使用：组件自身引入`store`,通过`store.getState().count、store.dispatch({})`来获取与修改状态；
+> react-redux使用：容器组件获取状态时通过对应的`reducer`键名；
+> 修改状态时，redux会遍历所有`reducer`中`type`，所以一般不同容器对应的`action`也应不同；
 
 #### 2、react-redux
 
-react-redux：用于让 redux 脱离组件本身，通过容器`connect(mapStateToProps,mapDispatchToProps)(UI组件)`，连接组件与 redux;
+react-redux：用于让 redux 脱离组件本身，通过容器组件做连接，`connect(mapStateToProps,mapDispatchToProps)(UI组件)`，连接UI组件与 redux;
 `import { connect } from "react-redux";`
 `import { Provider } from "react-redux";`
 

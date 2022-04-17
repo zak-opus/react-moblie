@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Toast, NavBar, InputItem, Button } from "antd-mobile";
-import { codeReg, phoneReg } from "../../config/reg";
-import { CODETIME } from "../../config/constant";
+import { codeReg, phoneReg } from "@/config/reg";
+import { CODETIME } from "@/config/constant";
 import "./index.less";
 
 export default class Login extends Component {

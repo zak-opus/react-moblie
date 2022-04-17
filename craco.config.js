@@ -1,5 +1,6 @@
 const CracoLessPlugin = require("craco-less");
 const pxtorem = require("postcss-pxtorem");
+const path = require('path')
 module.exports = {
   //做antd-mobile样式按需加载
   babel: {
@@ -48,6 +49,14 @@ module.exports = {
           //不对这些文件中样式做转换，开启后，按需引入的antd样式就不能转换rem了
         }),
       ],
+    },
+  },
+  // 配置别名
+  webpack: {
+    // 配置别名
+    alias: {
+      // 约定：使用 @ 表示 src 文件所在路径
+      '@': path.resolve(__dirname, 'src'),
     },
   },
 };

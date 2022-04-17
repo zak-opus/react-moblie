@@ -1,13 +1,21 @@
-import { Component } from "react";
+import React, { Component } from "react";
+import Test1 from "../Test1";
+import {userContext} from '@/utils/context'
+const { Provider } = userContext;
+
 export default class User extends Component {
+  state = {
+    name: "小刘",
+  };
   increment = () => {
     const { value } = this.numberNode;
     this.props.increment(value * 1);
   };
-  decrement = () => {};
-  incrementIfOdd = () => {};
-  incrementAsync = () => {};
+  changeName = () => {
+    this.setState({ name: "小张" });
+  };
   render() {
+    const { name } = this.state;
     return (
       <div>
         <h2>当前求和为:{this.props.sum}</h2>
@@ -17,10 +25,12 @@ export default class User extends Component {
           <option value="3">3</option>
         </select>
         &nbsp;
-        <button onClick={this.increment}>+</button>&nbsp;
-        <button onClick={this.decrement}>-</button>&nbsp;
-        <button onClick={this.incrementIfOdd}>奇数加</button>&nbsp;
-        <button onClick={this.incrementAsync}>异步加</button>
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.changeName}>改名</button>
+        <hr />
+        <Provider value={name}>
+          <Test1></Test1>
+        </Provider>
       </div>
     );
   }

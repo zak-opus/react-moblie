@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "@redux-devtools/extension";
 
-// 引入scount组件的reducer
+// 引入count组件的reducer
 import countReducer from "./count_reducer";
 import reducer2 from "./reducer2";
 const allReducer = combineReducers({ count: countReducer, reducer2 });
