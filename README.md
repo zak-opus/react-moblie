@@ -22,7 +22,7 @@
 **注意:react 社区方案如`@craco/craco`,只能使用 yarn 安装,所以本项目使用 yarn**
 
 ### 四、笔记
-
+> state：类似vue中data,存放组件的数据；
 #### 1、redux
 
 redux 就是用于存放一些公用的变量，让组件们可以访问与操作；
@@ -68,3 +68,8 @@ react-redux：用于让 redux 脱离组件本身，通过容器`connect(mapState
      },
    };
 ```
+#### 3、hooks
+> 为函数组件提供一些扩展功能，使其也能像类组件；
++ useState:用于函数组件能使用`state`
++ useEffect：使函数组件可以使用生命周期钩子；
++ useRef：使函数组件可以使用`ref`，准确说是第三种ref使用方式：容器`createRef`；

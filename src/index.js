@@ -5,7 +5,6 @@ import "./utils/rem";
 // 为每个容器组件，统一传入store
 import store from "./redux/store";
 import { Provider } from "react-redux";
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
